@@ -14,7 +14,8 @@ jobs:
       - name: Unpack PillTrack.zip into the repo
         run: |
           unzip -oq PillTrack.zip -d _unz
-          rsync -a --exclude .github _unz/*/ ./
+          rm -rf _unz/*/.github
+          cp -a _unz/*/. ./
           rm -rf _unz PillTrack.zip
       - name: Commit changes
         run: |
